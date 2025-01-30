@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using System.Collections.Generic;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
@@ -8,6 +9,8 @@ public class Game1 : Game
 {
     private GraphicsDeviceManager _graphics;
     private SpriteBatch _spriteBatch;
+    List<BaseClass> entities = new List<BaseClass>();
+    Texture2D pixel;
     Vector2 v1 = new Vector2(0,0);
     Vector2 v2 = new Vector2(0,0);
 
@@ -31,17 +34,21 @@ public class Game1 : Game
     protected override void LoadContent()
     {
         _spriteBatch = new SpriteBatch(GraphicsDevice);
+        Player s = new Player(null,Color.Azure, Vector2.Zero, new Point(10000, 10000));
+        BaseClass.Add(s);
 
         // TODO: use this.Content to load your game content here
     }
 
     protected override void Update(GameTime gameTime)
     {
-        if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
+        if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed 
+        || Keyboard.GetState().IsKeyDown(Keys.Escape))
             Exit();
 
-        // TODO: Add your update logic here
-
+        foreach (BaseClass e in entities){
+            e.Update();
+        }
         base.Update(gameTime);
     }
 
