@@ -11,12 +11,11 @@ namespace _vningsuppfsfkj
         protected Color color;
         protected Rectangle hitbox;
 
-        public BaseClass(Texture2D texture, Vector2 position, Color color, Point size)
+        public BaseClass(Texture2D texture, Vector2 position)
         {
             this.texture = texture;
-            this.color = color;
             this.position = position;
-            hitbox = new Rectangle(position.ToPoint(),size);
+            color = Color.White;
         }
 
         public virtual void Update(){

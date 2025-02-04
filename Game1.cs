@@ -19,9 +19,6 @@ public class Game1 : Game
         _graphics = new GraphicsDeviceManager(this);
         Content.RootDirectory = "Content";
         IsMouseVisible = true;
-        v1 += v2;
-        v1*=v2;
-        v1 = 3;
     }
 
     protected override void Initialize()
@@ -33,11 +30,11 @@ public class Game1 : Game
 
     protected override void LoadContent()
     {
+        Texture2D pixel;
+        pixel = new Texture2D(GraphicsDevice,1,1);
+        pixel.SetData(new Color[]{Color.White});
         _spriteBatch = new SpriteBatch(GraphicsDevice);
-        Player s = new Player(null,Color.Azure, Vector2.Zero, new Point(10000, 10000));
-        BaseClass.Add(s);
-
-        // TODO: use this.Content to load your game content here
+        entities.Add(new Player(pixel));
     }
 
     protected override void Update(GameTime gameTime)
@@ -56,7 +53,11 @@ public class Game1 : Game
     {
         GraphicsDevice.Clear(Color.CornflowerBlue);
 
-        // TODO: Add your drawing code here
+         _spriteBatch.Begin();
+
+        foreach(var entity in entities){
+            entity.Draw(_spriteBatch);
+        }
 
         base.Draw(gameTime);
     }
