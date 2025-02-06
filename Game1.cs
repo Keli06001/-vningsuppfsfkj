@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
@@ -10,9 +11,6 @@ public class Game1 : Game
     private GraphicsDeviceManager _graphics;
     private SpriteBatch _spriteBatch;
     List<BaseClass> entities = new List<BaseClass>();
-    Texture2D pixel;
-    Vector2 v1 = new Vector2(0,0);
-    Vector2 v2 = new Vector2(0,0);
 
     public Game1()
     {
@@ -30,10 +28,14 @@ public class Game1 : Game
 
     protected override void LoadContent()
     {
+        _spriteBatch = new SpriteBatch(GraphicsDevice);
+
         Texture2D pixel;
+
         pixel = new Texture2D(GraphicsDevice,1,1);
         pixel.SetData(new Color[]{Color.White});
-        _spriteBatch = new SpriteBatch(GraphicsDevice);
+
+        entities.Add(new Enemy(pixel, new Vector2(400,380)));
         entities.Add(new Player(pixel));
     }
 
@@ -43,8 +45,8 @@ public class Game1 : Game
         || Keyboard.GetState().IsKeyDown(Keys.Escape))
             Exit();
 
-        foreach (BaseClass e in entities){
-            e.Update();
+        foreach (var BaseClass in entities){
+            BaseClass.Update();
         }
         base.Update(gameTime);
     }
@@ -55,10 +57,11 @@ public class Game1 : Game
 
          _spriteBatch.Begin();
 
-        foreach(var entity in entities){
-            entity.Draw(_spriteBatch);
+        foreach(var BaseClass in entities){
+            BaseClass.Draw(_spriteBatch);
         }
-
+        
+        _spriteBatch.End();
         base.Draw(gameTime);
     }
 }
