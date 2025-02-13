@@ -11,6 +11,9 @@ public class Game1 : Game
     private GraphicsDeviceManager _graphics;
     private SpriteBatch _spriteBatch;
     List<BaseClass> entities = new List<BaseClass>();
+    private BulletSystem bulletSystem;
+    Texture2D bullet;
+
 
     public Game1()
     {
@@ -31,9 +34,13 @@ public class Game1 : Game
         _spriteBatch = new SpriteBatch(GraphicsDevice);
 
         Texture2D pixel;
+        Texture2D bullet;
 
         pixel = new Texture2D(GraphicsDevice,1,1);
         pixel.SetData(new Color[]{Color.White});
+
+        bullet = Content.Load<Texture2D>("bullet.png");
+        BulletSystem.CreateInstance(bullet);
 
         entities.Add(new Enemy(pixel, new Vector2(400,380)));
         entities.Add(new Player(pixel));
@@ -48,18 +55,20 @@ public class Game1 : Game
         foreach (var BaseClass in entities){
             BaseClass.Update();
         }
+        BulletSystem.Instance.Update();
         base.Update(gameTime);
     }
 
     protected override void Draw(GameTime gameTime)
     {
-        GraphicsDevice.Clear(Color.CornflowerBlue);
+        GraphicsDevice.Clear(Color.Black);
 
          _spriteBatch.Begin();
 
         foreach(var BaseClass in entities){
             BaseClass.Draw(_spriteBatch);
         }
+        BulletSystem.Instance.Draw(_spriteBatch);
         
         _spriteBatch.End();
         base.Draw(gameTime);

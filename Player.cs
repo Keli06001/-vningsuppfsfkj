@@ -10,16 +10,18 @@ namespace _vningsuppfsfkj
 {
     public class Player : BaseClass
     {
+        private MouseState oldState;
         public Player(Texture2D texture)
             :base(texture, new Microsoft.Xna.Framework.Vector2(350, 190))
         {
-            color = Microsoft.Xna.Framework.Color.Green;
+            color = Microsoft.Xna.Framework.Color.Blue;
         }
 
 
         public override void Update(){
             KeyboardState kState = Keyboard.GetState();
             MouseState mState = Mouse.GetState();
+            Vector2 direction = new Vector2(0,0);
 
             int speed = 5;
 

@@ -1,6 +1,6 @@
-using System.Drawing;
-using System.Numerics;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Input;
 
 namespace _vningsuppfsfkj
 {
@@ -9,8 +9,12 @@ namespace _vningsuppfsfkj
         public Enemy(Texture2D texture, Vector2 position)
             :base(texture, position)
         {
-            color = Color.Black;
+            color = Color.Red;
         }
-        
+        public override void Update()
+        {
+            
+        }
+
     }
 }

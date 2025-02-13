@@ -25,7 +25,7 @@ namespace _vningsuppfsfkj
 
         }
 
-        public void Draw(SpriteBatch spriteBatch)
+        public virtual void Draw(SpriteBatch spriteBatch)
         {
             hitbox = new Rectangle((int)position.X, (int)position.Y,100,100);
             
