@@ -39,11 +39,11 @@ public class Game1 : Game
         pixel = new Texture2D(GraphicsDevice,1,1);
         pixel.SetData(new Color[]{Color.White});
 
-        bullet = Content.Load<Texture2D>("bullet.png");
+        bullet = Content.Load<Texture2D>("bullet");
         BulletSystem.CreateInstance(bullet);
 
-        entities.Add(new Enemy(pixel, new Vector2(400,380)));
         entities.Add(new Player(pixel));
+        entities.Add(new Enemy(pixel, new Vector2(400,380)));
     }
 
     protected override void Update(GameTime gameTime)

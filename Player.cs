@@ -1,10 +1,9 @@
 using System;
-using System.Drawing;
-using System.Windows.Forms;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using SharpDX.Direct3D9;
+using SharpDX.MediaFoundation;
 
 namespace _vningsuppfsfkj
 {
@@ -47,16 +46,25 @@ namespace _vningsuppfsfkj
                 position.X = 350;
                 position.Y = 190;
             }
-
-            if(mState.LeftButton==Microsoft.Xna.Framework.Input.ButtonState.Pressed) 
-            {
-                Vector2 vector;
-                vector.Y = Button.MousePosition.Y - position.Y;
-                vector.X = Button.MousePosition.X - position.X;
-                double angle = Math.Atan2(vector.Y, vector.X);
-                
+            if(direction != Vector2.Zero){
+                direction.Normalize();
             }
+            position+=direction * speed;
+
+             if(mState.LeftButton == ButtonState.Pressed && oldState.LeftButton == ButtonState.Released) 
+            {
+                Vector2 bulletDirection = mState.Position.ToVector2() - position;
+                bulletDirection.Normalize();
+
+                BulletSystem.Instance.SummonBullet(position, bulletDirection);
+            }
+                
             
+            oldState = mState;
+        }
+
+        public Vector2 GetPosition(){
+            return position;
         }
     }
 }

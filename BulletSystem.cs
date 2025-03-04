@@ -23,8 +23,8 @@ namespace _vningsuppfsfkj
             this.bulletTexture = bulletTexture;
         }
 
-        public void SummonBullet(Vector2 position, double angle){
-            bullets.Add(new Bullet(bulletTexture, position, angle));
+        public void SummonBullet(Vector2 position, Vector2 direction){
+            bullets.Add(new Bullet(bulletTexture, position, direction));
         }
 
         private void RemoveBullet(){

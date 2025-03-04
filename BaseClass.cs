@@ -11,7 +11,7 @@ namespace _vningsuppfsfkj
         protected Rectangle hitbox;
 
         public Rectangle Rectangle{
-            get{return Rectangle;}
+            get{return hitbox;}
         }
 
         public BaseClass(Texture2D texture, Vector2 position)
@@ -27,7 +27,7 @@ namespace _vningsuppfsfkj
 
         public virtual void Draw(SpriteBatch spriteBatch)
         {
-            hitbox = new Rectangle((int)position.X, (int)position.Y,100,100);
+            hitbox = new Rectangle((int)(position.X - 50), (int)(position.Y - 50) ,100, 100);
             
             spriteBatch.Draw(texture, hitbox, color);
         }
