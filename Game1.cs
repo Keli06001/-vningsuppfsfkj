@@ -43,13 +43,12 @@ public class Game1 : Game
         BulletSystem.CreateInstance(bullet);
 
         entities.Add(new Player(pixel));
-        entities.Add(new Enemy(pixel, new Vector2(400,380)));
+        entities.Add(new Enemy(pixel, new Vector2(400,380), entities));
     }
 
     protected override void Update(GameTime gameTime)
     {
-        if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed 
-        || Keyboard.GetState().IsKeyDown(Keys.Escape))
+        if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
             Exit();
 
         foreach (var BaseClass in entities){
@@ -61,9 +60,9 @@ public class Game1 : Game
 
     protected override void Draw(GameTime gameTime)
     {
-        GraphicsDevice.Clear(Color.Black);
+        GraphicsDevice.Clear(Color.Aqua);
 
-         _spriteBatch.Begin();
+        _spriteBatch.Begin();
 
         foreach(var BaseClass in entities){
             BaseClass.Draw(_spriteBatch);

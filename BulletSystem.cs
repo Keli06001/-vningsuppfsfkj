@@ -8,7 +8,7 @@ namespace _vningsuppfsfkj
     {
         public static BulletSystem Instance{
             get{
-                return Instance;
+                return instance;
             }
         }
         private static BulletSystem instance;
@@ -26,7 +26,6 @@ namespace _vningsuppfsfkj
         public void SummonBullet(Vector2 position, Vector2 direction){
             bullets.Add(new Bullet(bulletTexture, position, direction));
         }
-
         private void RemoveBullet(){
 
         }
