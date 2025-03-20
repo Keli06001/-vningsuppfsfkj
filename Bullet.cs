@@ -10,7 +10,7 @@ namespace _vningsuppfsfkj
     {
         private int size;
         Texture2D bulletTexture;
-        private float speed = 1;
+        private float speed = 5;
 
         private Vector2 direction;
 
@@ -33,7 +33,7 @@ namespace _vningsuppfsfkj
             scale.X = 0.04f;
             scale.Y = 0.04f;
 
-         spriteBatch.Draw(bulletTexture, position, sourceRectangle,Color.White, (float)((Math.Atan2(direction.Y,direction.X))+((float)(Math.PI)/2f)), position/2, scale,SpriteEffects.None,1);
+         spriteBatch.Draw(bulletTexture, position, sourceRectangle,Color.White, (float)((Math.Atan2(direction.Y,direction.X))), position/2, scale,SpriteEffects.None,1);
         }
         
     }
