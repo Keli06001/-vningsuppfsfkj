@@ -12,6 +12,7 @@ public class Game1 : Game
     private SpriteBatch _spriteBatch;
     List<BaseClass> entities = new List<BaseClass>();
     private BulletSystem bulletSystem;
+    private Player player;
     Texture2D bullet;
 
 
@@ -33,6 +34,10 @@ public class Game1 : Game
     {
         _spriteBatch = new SpriteBatch(GraphicsDevice);
 
+        Texture2D playerTexture = Content.Load<Texture2D>("player"); 
+
+        player = new Player(playerTexture);
+
         Texture2D pixel;
         Texture2D bullet;
 
@@ -47,7 +52,7 @@ public class Game1 : Game
     }
 
     protected override void Update(GameTime gameTime)
-    {
+    {   
         if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
             Exit();
 
@@ -55,6 +60,7 @@ public class Game1 : Game
             BaseClass.Update();
         }
         BulletSystem.Instance.Update();
+        player.Update(gameTime);
         base.Update(gameTime);
     }
 

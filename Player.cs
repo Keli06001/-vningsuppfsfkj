@@ -10,19 +10,28 @@ namespace _vningsuppfsfkj
     public class Player : BaseClass
     {
         private MouseState oldState;
+        private float timeSinceLastClick = 0f;
+        private float clickCooldown = 1f;
+        int speed = 5;
         public Player(Texture2D texture)
-            :base(texture, new Microsoft.Xna.Framework.Vector2(350, 190))
+            : base(texture, new Vector2(350, 190))
         {
-            color = Microsoft.Xna.Framework.Color.Blue;
+         color = Microsoft.Xna.Framework.Color.Blue;
         }
 
-
-        public override void Update(){
+        public void Update(GameTime gameTime){
             KeyboardState kState = Keyboard.GetState();
             MouseState mState = Mouse.GetState();
             Vector2 direction = new Vector2(0,0);
+            timeSinceLastClick += (float)gameTime.ElapsedGameTime.TotalSeconds;
+            speed = 5;
 
-            int speed = 5;
+            if (Keyboard.GetState().IsKeyDown(Keys.LeftShift) && timeSinceLastClick >= clickCooldown)
+            {
+                speed=20;
+                timeSinceLastClick = 0f;
+            }
+
 
 
             if(kState.IsKeyDown(Microsoft.Xna.Framework.Input.Keys.W)) 
@@ -65,6 +74,9 @@ namespace _vningsuppfsfkj
 
         public Vector2 GetPosition(){
             return position;
+        }
+        public int GetValue(){
+            return speed;
         }
     }
 }
