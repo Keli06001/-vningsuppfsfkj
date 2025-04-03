@@ -29,12 +29,31 @@ namespace _vningsuppfsfkj
         private void RemoveBullet(){
 
         }
+        public virtual void Update(int viewportWidth, int viewportHeight, List<BaseClass> entities)
+        {
+            for (int i = bullets.Count - 1; i >= 0; i--)
+            {
+                bullets[i].Update();
 
-        public virtual void Update(){
-            foreach(var Bullet in bullets){
-                Bullet.Update();
+                // Remove bullets that go off-screen
+                if (bullets[i].IsOffScreen(viewportWidth, viewportHeight))
+                {
+                    bullets.RemoveAt(i);
+                    continue;
+                }
+
+                // Check for collision with enemies
+                for (int j = entities.Count - 1; j >= 0; j--)
+                {
+                    if (entities[j] is Enemy enemy && bullets[i].Rectangle.Intersects(enemy.Rectangle))
+                    {
+                        entities.RemoveAt(j); // Remove enemy
+                        bullets.RemoveAt(i);  // Remove bullet
+                        SpawnNewEnemy(entities); // Spawn a new enemy
+                        break;
+                    }
+                }
             }
-
         }
 
         public virtual void Draw(SpriteBatch spriteBatch)

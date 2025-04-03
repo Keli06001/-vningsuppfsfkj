@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <SourceFile>C:/Users/Admin/Documents/GitHub/-vningsuppfsfkj/Content/bullet.png</SourceFile>
-  <SourceTime>2025-04-03T12:02:43.8361405+02:00</SourceTime>
-  <DestFile>C:/Users/Admin/Documents/GitHub/-vningsuppfsfkj/Content/bin/Windows/Content/bullet.xnb</DestFile>
-  <DestTime>2025-04-03T12:04:04.5902221+02:00</DestTime>
+  <SourceFile>C:/Users/Admin/Documents/GitHub/-vningsuppfsfkj/Content/player.png</SourceFile>
+  <SourceTime>2025-04-03T12:12:25.2102395+02:00</SourceTime>
+  <DestFile>C:/Users/Admin/Documents/GitHub/-vningsuppfsfkj/Content/bin/Windows/Content/player.xnb</DestFile>
+  <DestTime>2025-04-03T12:30:49.3375784+02:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2022-07-26T13:44:56+02:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

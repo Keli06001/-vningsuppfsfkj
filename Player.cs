@@ -11,12 +11,12 @@ namespace _vningsuppfsfkj
     {
         private MouseState oldState;
         private float timeSinceLastClick = 0f;
-        private float clickCooldown = 1f;
+        private float clickCooldown = 1.5f;
         int speed = 5;
         public Player(Texture2D texture)
             : base(texture, new Vector2(350, 190))
         {
-         color = Microsoft.Xna.Framework.Color.Blue;
+            color = Microsoft.Xna.Framework.Color.Blue;
         }
 
         public void Update(GameTime gameTime){
@@ -28,7 +28,7 @@ namespace _vningsuppfsfkj
 
             if (Keyboard.GetState().IsKeyDown(Keys.LeftShift) && timeSinceLastClick >= clickCooldown)
             {
-                speed=20;
+                speed=50;
                 timeSinceLastClick = 0f;
             }
 

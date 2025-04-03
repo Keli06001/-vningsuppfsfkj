@@ -24,8 +24,12 @@ namespace _vningsuppfsfkj
 
         public override void Update(){
             position += direction * speed;
+            hitbox = new Rectangle((int)position.X, (int)position.Y, texture.Width / 4, texture.Height / 4);
         }
-
+        public bool IsOffScreen(int viewportWidth, int viewportHeight)
+        {
+            return position.X < 0 || position.Y < 0 || position.X > viewportWidth || position.Y > viewportHeight;
+        }
         public override void Draw(SpriteBatch spriteBatch)
         {
             Rectangle sourceRectangle = new Rectangle(0, 0, bulletTexture.Width, bulletTexture.Height);

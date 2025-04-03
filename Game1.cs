@@ -47,8 +47,14 @@ public class Game1 : Game
         bullet = Content.Load<Texture2D>("bullet");
         BulletSystem.CreateInstance(bullet);
 
-        entities.Add(new Player(pixel));
+        entities.Add(player);
         entities.Add(new Enemy(pixel, new Vector2(400,380), entities));
+    }
+    private void SpawnNewEnemy(List<BaseClass> entities)
+    {
+        Random random = new Random();
+        Vector2 newEnemyPosition = new Vector2(random.Next(100, 700), random.Next(100, 500)); // Adjust range as needed
+        entities.Add(new Enemy(Content.Load<Texture2D>("enemy"), newEnemyPosition, entities));
     }
 
     protected override void Update(GameTime gameTime)
@@ -59,7 +65,7 @@ public class Game1 : Game
         foreach (var BaseClass in entities){
             BaseClass.Update();
         }
-        BulletSystem.Instance.Update();
+        BulletSystem.Instance.Update(GraphicsDevice.Viewport.Width, GraphicsDevice.Viewport.Height, entities);
         player.Update(gameTime);
         base.Update(gameTime);
     }
