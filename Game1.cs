@@ -8,6 +8,8 @@ namespace _vningsuppfsfkj;
 
 public class Game1 : Game
 {
+
+    public static Game1 Game{get;set;}
     private GraphicsDeviceManager _graphics;
     private SpriteBatch _spriteBatch;
     List<BaseClass> entities = new List<BaseClass>();
@@ -21,6 +23,7 @@ public class Game1 : Game
         _graphics = new GraphicsDeviceManager(this);
         Content.RootDirectory = "Content";
         IsMouseVisible = true;
+        Game = this;
     }
 
     protected override void Initialize()
@@ -50,7 +53,7 @@ public class Game1 : Game
         entities.Add(player);
         entities.Add(new Enemy(pixel, new Vector2(400,380), entities));
     }
-    private void SpawnNewEnemy(List<BaseClass> entities)
+    public void SpawnNewEnemy(List<BaseClass> entities)
     {
         Random random = new Random();
         Vector2 newEnemyPosition = new Vector2(random.Next(100, 700), random.Next(100, 500)); // Adjust range as needed

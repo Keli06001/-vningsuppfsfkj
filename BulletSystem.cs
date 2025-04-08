@@ -47,9 +47,9 @@ namespace _vningsuppfsfkj
                 {
                     if (entities[j] is Enemy enemy && bullets[i].Rectangle.Intersects(enemy.Rectangle))
                     {
-                        entities.RemoveAt(j); // Remove enemy
-                        bullets.RemoveAt(i);  // Remove bullet
-                        SpawnNewEnemy(entities); // Spawn a new enemy
+                        entities.RemoveAt(j); 
+                        bullets.RemoveAt(i); 
+                        Game1.Game.SpawnNewEnemy(entities);
                         break;
                     }
                 }
