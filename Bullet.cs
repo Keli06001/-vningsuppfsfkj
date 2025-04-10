@@ -39,6 +39,5 @@ namespace _vningsuppfsfkj
 
          spriteBatch.Draw(bulletTexture, position, sourceRectangle,Color.White, (float)((Math.Atan2(direction.Y,direction.X))), position/2, scale,SpriteEffects.None,1);
         }
-        
     }
 }

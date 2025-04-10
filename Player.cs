@@ -16,7 +16,7 @@ namespace _vningsuppfsfkj
         public Player(Texture2D texture)
             : base(texture, new Vector2(350, 190))
         {
-            color = Microsoft.Xna.Framework.Color.Blue;
+ 
         }
 
         public void Update(GameTime gameTime){

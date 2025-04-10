@@ -38,25 +38,20 @@ public class Game1 : Game
         _spriteBatch = new SpriteBatch(GraphicsDevice);
 
         Texture2D playerTexture = Content.Load<Texture2D>("player"); 
-
         player = new Player(playerTexture);
 
-        Texture2D pixel;
         Texture2D bullet;
-
-        pixel = new Texture2D(GraphicsDevice,1,1);
-        pixel.SetData(new Color[]{Color.White});
 
         bullet = Content.Load<Texture2D>("bullet");
         BulletSystem.CreateInstance(bullet);
 
         entities.Add(player);
-        entities.Add(new Enemy(pixel, new Vector2(400,380), entities));
+        entities.Add(new Enemy(Content.Load<Texture2D>("enemy"), new Vector2(400,380), entities));
     }
     public void SpawnNewEnemy(List<BaseClass> entities)
     {
         Random random = new Random();
-        Vector2 newEnemyPosition = new Vector2(random.Next(100, 700), random.Next(100, 500)); // Adjust range as needed
+        Vector2 newEnemyPosition = new Vector2(random.Next(100, 700), random.Next(100, 500));
         entities.Add(new Enemy(Content.Load<Texture2D>("enemy"), newEnemyPosition, entities));
     }
 
