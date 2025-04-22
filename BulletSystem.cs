@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -47,6 +48,7 @@ namespace _vningsuppfsfkj
                 {
                     if (entities[j] is Enemy enemy && bullets[i].Rectangle.Intersects(enemy.Rectangle))
                     {
+                        Console.WriteLine(enemy.Rectangle);
                         entities.RemoveAt(j); 
                         bullets.RemoveAt(i); 
                         Game1.Game.SpawnNewEnemy(entities);

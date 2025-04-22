@@ -24,7 +24,7 @@ namespace _vningsuppfsfkj
 
         public override void Update(){
             position += direction * speed;
-            hitbox = new Rectangle((int)position.X, (int)position.Y, texture.Width / 4, texture.Height / 4);
+            hitbox = new Rectangle((int)position.X, (int)position.Y, texture.Width / 25, texture.Height / 25);
         }
         public bool IsOffScreen(int viewportWidth, int viewportHeight)
         {
@@ -37,7 +37,7 @@ namespace _vningsuppfsfkj
             scale.X = 0.04f;
             scale.Y = 0.04f;
 
-         spriteBatch.Draw(bulletTexture, position, sourceRectangle,Color.White, (float)((Math.Atan2(direction.Y,direction.X))), position/2, scale,SpriteEffects.None,1);
+         spriteBatch.Draw(bulletTexture, hitbox, sourceRectangle,Color.White, (float)((Math.Atan2(direction.Y,direction.X))), position/2,SpriteEffects.None,1);
         }
     }
 }

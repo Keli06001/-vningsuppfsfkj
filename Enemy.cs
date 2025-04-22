@@ -12,7 +12,6 @@ namespace _vningsuppfsfkj
         public Enemy(Texture2D texture, Vector2 position, List<BaseClass> entities)
             :base(texture, position)
         {
-            color = Color.Red;
             foreach (var entity in entities){
                 if (entity is Player){
                     p = (Player)entity;

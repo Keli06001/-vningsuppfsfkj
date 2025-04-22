@@ -65,7 +65,7 @@ namespace _vningsuppfsfkj
                 Vector2 bulletDirection = mState.Position.ToVector2() - position;
                 bulletDirection.Normalize();
 
-                BulletSystem.Instance.SummonBullet(position, bulletDirection);
+                BulletSystem.Instance.SummonBullet(position+new Vector2(50,50), bulletDirection);
             }
                 
             
