@@ -39,3 +39,4 @@ c:\Users\Admin\Documents\GitHub\-vningsuppfsfkj\bin\Debug\net6.0-windows\-vnings
 C:\Users\Admin\Documents\GitHub\-vningsuppfsfkj\obj\Debug\net6.0-windows\ref\-vningsuppfsfkj.dll
 C:\Users\Admin\Documents\GitHub\-vningsuppfsfkj\bin\Debug\net6.0-windows\Content\player.xnb
 c:\Users\Admin\Documents\GitHub\-vningsuppfsfkj\bin\Debug\net6.0-windows\Content\enemy.xnb
+C:\Users\Admin\Documents\GitHub\-vningsuppfsfkj\bin\Debug\net6.0-windows\Content\File.xnb

@@ -16,6 +16,7 @@ public class Game1 : Game
     private BulletSystem bulletSystem;
     private Player player;
     Texture2D bullet;
+    SpriteFont font;
 
 
     public Game1()
@@ -36,6 +37,7 @@ public class Game1 : Game
     protected override void LoadContent()
     {
         _spriteBatch = new SpriteBatch(GraphicsDevice);
+        font = Content.Load<SpriteFont>("File");
 
         Texture2D playerTexture = Content.Load<Texture2D>("player"); 
         player = new Player(playerTexture);
@@ -78,7 +80,8 @@ public class Game1 : Game
             BaseClass.Draw(_spriteBatch);
         }
         BulletSystem.Instance.Draw(_spriteBatch);
-        
+        _spriteBatch.DrawString(font, BulletSystem.killCount.ToString(), new Vector2(10, 10), Color.Black);
+        Console.WriteLine(BulletSystem.killCount);
         _spriteBatch.End();
         base.Draw(gameTime);
     }

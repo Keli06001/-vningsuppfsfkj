@@ -15,6 +15,7 @@ namespace _vningsuppfsfkj
         private static BulletSystem instance;
         List<Bullet> bullets = new List<Bullet>();
         Texture2D bulletTexture;
+        public static int killCount= 0;
 
         public static void CreateInstance(Texture2D bulletTexture){
             instance = new BulletSystem(bulletTexture);
@@ -48,9 +49,9 @@ namespace _vningsuppfsfkj
                 {
                     if (entities[j] is Enemy enemy && bullets[i].Rectangle.Intersects(enemy.Rectangle))
                     {
-                        Console.WriteLine(enemy.Rectangle);
                         entities.RemoveAt(j); 
                         bullets.RemoveAt(i); 
+                        killCount++;
                         Game1.Game.SpawnNewEnemy(entities);
                         break;
                     }
