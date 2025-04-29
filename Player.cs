@@ -1,4 +1,5 @@
 using System;
+using System.Diagnostics.CodeAnalysis;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
@@ -12,6 +13,7 @@ namespace _vningsuppfsfkj
         private MouseState oldState;
         private float timeSinceLastClick = 0f;
         private float clickCooldown = 1.5f;
+        int hp;
         int speed = 5;
         public Player(Texture2D texture)
             : base(texture, new Vector2(350, 190))
@@ -67,9 +69,30 @@ namespace _vningsuppfsfkj
 
                 BulletSystem.Instance.SummonBullet(position+new Vector2(50,50), bulletDirection);
             }
-                
-            
+
+            for (int j = Game1.Game.entities.Count - 1; j >= 0; j--)
+            {
+                if (Game1.Game.entities[j] is Enemy enemy && this.Rectangle.Intersects(enemy.Rectangle))
+                {
+                    HandlePlayerDeath();
+                    break;
+                }
+            }
+            if(hp==3)
+            {
+
+            }
+
             oldState = mState;
+        }
+        private void HandlePlayerDeath()
+        {
+            hp++;
+            while(hp<=3)
+            {
+                position = new Vector2(350, 190);
+            }
+             // Återställ spelarens position
         }
 
         public Vector2 GetPosition(){

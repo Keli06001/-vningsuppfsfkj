@@ -12,7 +12,7 @@ public class Game1 : Game
     public static Game1 Game{get;set;}
     private GraphicsDeviceManager _graphics;
     private SpriteBatch _spriteBatch;
-    List<BaseClass> entities = new List<BaseClass>();
+    public List<BaseClass> entities{get; set;} = new List<BaseClass>();
     private BulletSystem bulletSystem;
     private Player player;
     Texture2D bullet;
