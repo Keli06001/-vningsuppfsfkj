@@ -22,7 +22,7 @@ namespace _vningsuppfsfkj
             this.position = position;
         }
 
-        public override void Update(){
+        public override void Update(GameTime gameTime){
             position += direction * speed;
             hitbox = new Rectangle((int)position.X, (int)position.Y, texture.Width / 25, texture.Height / 25);
         }

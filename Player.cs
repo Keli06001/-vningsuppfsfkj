@@ -13,7 +13,7 @@ namespace _vningsuppfsfkj
         private MouseState oldState;
         private float timeSinceLastClick = 0f;
         private float clickCooldown = 1.5f;
-        int hp;
+        public int hp= 0;
         int speed = 5;
         public Player(Texture2D texture)
             : base(texture, new Vector2(350, 190))
@@ -21,7 +21,7 @@ namespace _vningsuppfsfkj
  
         }
 
-        public void Update(GameTime gameTime){
+        public override void Update(GameTime gameTime){
             KeyboardState kState = Keyboard.GetState();
             MouseState mState = Mouse.GetState();
             Vector2 direction = new Vector2(0,0);
@@ -78,21 +78,13 @@ namespace _vningsuppfsfkj
                     break;
                 }
             }
-            if(hp==3)
-            {
-
-            }
 
             oldState = mState;
         }
         private void HandlePlayerDeath()
         {
             hp++;
-            while(hp<=3)
-            {
-                position = new Vector2(350, 190);
-            }
-             // Återställ spelarens position
+            position = new Vector2(350, 190);
         }
 
         public Vector2 GetPosition(){

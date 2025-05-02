@@ -18,7 +18,7 @@ namespace _vningsuppfsfkj
                 }
             }
         }
-        public override void Update()
+        public override void Update(GameTime gameTime)
         {
             Vector2 direction = p.GetPosition();
             direction = direction - position;

@@ -28,14 +28,11 @@ namespace _vningsuppfsfkj
         public void SummonBullet(Vector2 position, Vector2 direction){
             bullets.Add(new Bullet(bulletTexture, position, direction));
         }
-        private void RemoveBullet(){
-
-        }
-        public virtual void Update(int viewportWidth, int viewportHeight, List<BaseClass> entities)
+        public virtual void Update(int viewportWidth, int viewportHeight, List<BaseClass> entities, GameTime gameTime)
         {
             for (int i = bullets.Count - 1; i >= 0; i--)
             {
-                bullets[i].Update();
+                bullets[i].Update(gameTime);
 
                 // Remove bullets that go off-screen
                 if (bullets[i].IsOffScreen(viewportWidth, viewportHeight))

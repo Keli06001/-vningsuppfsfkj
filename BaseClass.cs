@@ -21,7 +21,7 @@ namespace _vningsuppfsfkj
             color = Color.White;
         }
 
-        public virtual void Update(){
+        public virtual void Update(GameTime gameTime){
 
         }
 

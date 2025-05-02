@@ -63,9 +63,9 @@ public class Game1 : Game
             Exit();
 
         foreach (var BaseClass in entities){
-            BaseClass.Update();
+            BaseClass.Update(gameTime);
         }
-        BulletSystem.Instance.Update(GraphicsDevice.Viewport.Width, GraphicsDevice.Viewport.Height, entities);
+        BulletSystem.Instance.Update(GraphicsDevice.Viewport.Width, GraphicsDevice.Viewport.Height, entities, gameTime);
         player.Update(gameTime);
         base.Update(gameTime);
     }
@@ -79,9 +79,11 @@ public class Game1 : Game
         foreach(var BaseClass in entities){
             BaseClass.Draw(_spriteBatch);
         }
-        BulletSystem.Instance.Draw(_spriteBatch);
+        BulletSystem.Instance.Draw(_spriteBatch); 
         _spriteBatch.DrawString(font, BulletSystem.killCount.ToString(), new Vector2(10, 10), Color.Black);
-        Console.WriteLine(BulletSystem.killCount);
+        Console.WriteLine(BulletSystem.killCount);  
+        _spriteBatch.DrawString(font, player.hp.ToString(), new Vector2(20, 40), Color.Black);
+        Console.WriteLine(player.hp);
         _spriteBatch.End();
         base.Draw(gameTime);
     }
