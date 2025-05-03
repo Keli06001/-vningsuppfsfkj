@@ -9,7 +9,7 @@ namespace _vningsuppfsfkj
         protected Texture2D texture;
         protected Color color;
         protected Rectangle hitbox;
-
+        
         public Rectangle Rectangle{
             get{return hitbox;}
         }

@@ -34,14 +34,12 @@ namespace _vningsuppfsfkj
             {
                 bullets[i].Update(gameTime);
 
-                // Remove bullets that go off-screen
                 if (bullets[i].IsOffScreen(viewportWidth, viewportHeight))
                 {
                     bullets.RemoveAt(i);
                     continue;
                 }
 
-                // Check for collision with enemies
                 for (int j = entities.Count - 1; j >= 0; j--)
                 {
                     if (entities[j] is Enemy enemy && bullets[i].Rectangle.Intersects(enemy.Rectangle))
@@ -49,6 +47,7 @@ namespace _vningsuppfsfkj
                         entities.RemoveAt(j); 
                         bullets.RemoveAt(i); 
                         killCount++;
+                        PointSystem.Instance.AddXP(50);
                         Game1.Game.SpawnNewEnemy(entities);
                         break;
                     }

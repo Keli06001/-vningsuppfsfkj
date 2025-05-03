@@ -28,6 +28,10 @@ namespace _vningsuppfsfkj
             position+=direction * speed;
             
         }
+        public void Teleport(Vector2 newPosition)
+        {
+            position = newPosition; 
+        }
 
     }
 }

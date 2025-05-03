@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -17,6 +17,7 @@ public class Game1 : Game
     private Player player;
     Texture2D bullet;
     SpriteFont font;
+    private Shop shop;
 
 
     public Game1()
@@ -29,7 +30,6 @@ public class Game1 : Game
 
     protected override void Initialize()
     {
-        // TODO: Add your initialization logic here
 
         base.Initialize();
     }
@@ -41,6 +41,7 @@ public class Game1 : Game
 
         Texture2D playerTexture = Content.Load<Texture2D>("player"); 
         player = new Player(playerTexture);
+        shop = new Shop(player);
 
         Texture2D bullet;
 
@@ -53,12 +54,23 @@ public class Game1 : Game
     public void SpawnNewEnemy(List<BaseClass> entities)
     {
         Random random = new Random();
-        Vector2 newEnemyPosition = new Vector2(random.Next(100, 700), random.Next(100, 500));
+        Vector2 newEnemyPosition;
+        float minDistance = 200f;
+        do
+        {
+            newEnemyPosition = new Vector2(
+                random.Next(100, 700),
+                random.Next(100, 500)
+            );
+        }
+        while (Vector2.Distance(player.GetPosition(), newEnemyPosition) < minDistance);
+
         entities.Add(new Enemy(Content.Load<Texture2D>("enemy"), newEnemyPosition, entities));
     }
 
     protected override void Update(GameTime gameTime)
     {   
+        shop.Update();
         if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
             Exit();
 
@@ -66,7 +78,6 @@ public class Game1 : Game
             BaseClass.Update(gameTime);
         }
         BulletSystem.Instance.Update(GraphicsDevice.Viewport.Width, GraphicsDevice.Viewport.Height, entities, gameTime);
-        player.Update(gameTime);
         base.Update(gameTime);
     }
 
@@ -80,10 +91,20 @@ public class Game1 : Game
             BaseClass.Draw(_spriteBatch);
         }
         BulletSystem.Instance.Draw(_spriteBatch); 
-        _spriteBatch.DrawString(font, BulletSystem.killCount.ToString(), new Vector2(10, 10), Color.Black);
-        Console.WriteLine(BulletSystem.killCount);  
-        _spriteBatch.DrawString(font, player.hp.ToString(), new Vector2(20, 40), Color.Black);
-        Console.WriteLine(player.hp);
+        _spriteBatch.DrawString(font, "Kills: ", new Vector2(5, 10), Color.Black);
+        _spriteBatch.DrawString(font, BulletSystem.killCount.ToString(), new Vector2(50, 10), Color.Black);
+
+        _spriteBatch.DrawString(font, "HP: ", new Vector2(5, 30), Color.Black);
+        _spriteBatch.DrawString(font, player.hp.ToString(), new Vector2(40, 30), Color.Black);
+
+        _spriteBatch.DrawString(font, "XP: " + PointSystem.Instance.XP.ToString(), new Vector2(5, 50), Color.Black);
+        _spriteBatch.DrawString(font, shop.Message, new Vector2(5, 90), Color.Black);
+
+        _spriteBatch.DrawString(font, "Speed: " + player.GetSpeed(), new Vector2(5, 70), Color.Black);
+
+        _spriteBatch.DrawString(font, "SHOP" , new Vector2(600, 10), Color.Black);
+        _spriteBatch.DrawString(font, "Speed" , new Vector2(600, 30), Color.Black);
+
         _spriteBatch.End();
         base.Draw(gameTime);
     }
