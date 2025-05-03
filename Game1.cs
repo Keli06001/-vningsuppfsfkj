@@ -19,7 +19,6 @@ public class Game1 : Game
     SpriteFont font;
     private Shop shop;
 
-
     public Game1()
     {
         _graphics = new GraphicsDeviceManager(this);
@@ -55,7 +54,7 @@ public class Game1 : Game
     {
         Random random = new Random();
         Vector2 newEnemyPosition;
-        float minDistance = 200f;
+        float minDistance = 250f;
         do
         {
             newEnemyPosition = new Vector2(
@@ -70,7 +69,7 @@ public class Game1 : Game
 
     protected override void Update(GameTime gameTime)
     {   
-        shop.Update();
+        shop.Update(gameTime);
         if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
             Exit();
 
@@ -103,9 +102,15 @@ public class Game1 : Game
         _spriteBatch.DrawString(font, "Speed: " + player.GetSpeed(), new Vector2(5, 70), Color.Black);
 
         _spriteBatch.DrawString(font, "SHOP" , new Vector2(600, 10), Color.Black);
-        _spriteBatch.DrawString(font, "Speed" , new Vector2(600, 30), Color.Black);
+        _spriteBatch.DrawString(font, "Speed: U" , new Vector2(600, 30), Color.Black);
 
         _spriteBatch.End();
         base.Draw(gameTime);
+    }
+    public enum GameState
+    {
+        Menu,
+        Playing,
+        GameOver
     }
 }

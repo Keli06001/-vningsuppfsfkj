@@ -7,7 +7,7 @@ namespace _vningsuppfsfkj
 {
     public class Enemy : BaseClass
     {
-        int speed = 1;
+        int speed = 2;
         Player p;
         public Enemy(Texture2D texture, Vector2 position, List<BaseClass> entities)
             :base(texture, position)

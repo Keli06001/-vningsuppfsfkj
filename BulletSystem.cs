@@ -47,7 +47,7 @@ namespace _vningsuppfsfkj
                         entities.RemoveAt(j); 
                         bullets.RemoveAt(i); 
                         killCount++;
-                        PointSystem.Instance.AddXP(50);
+                        PointSystem.Instance.AddXP(20);
                         Game1.Game.SpawnNewEnemy(entities);
                         break;
                     }
