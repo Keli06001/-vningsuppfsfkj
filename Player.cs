@@ -13,6 +13,8 @@ namespace _vningsuppfsfkj
         private float clickCooldown = 1.5f; 
         private float timeSinceLastDeath = 0f; 
         private float spawnCooldown = 1.5f; 
+        private float shootCooldown = 0.5f; 
+        private float shootTimer = 0f;
         private bool dead = false; 
         public int hp = 3; 
         private float baseSpeed = 5f;
@@ -27,6 +29,7 @@ namespace _vningsuppfsfkj
 
         public override void Update(GameTime gameTime)
         {
+            shootTimer -= (float)gameTime.ElapsedGameTime.TotalSeconds;
 
             if (dead)
             {
@@ -51,11 +54,12 @@ namespace _vningsuppfsfkj
             CheckCollisionWithEnemies();
 
 
-            if (mState.LeftButton == ButtonState.Pressed && oldState.LeftButton == ButtonState.Released)
+            if (mState.LeftButton == ButtonState.Pressed && oldState.LeftButton == ButtonState.Released && shootTimer <= 0f) 
             {
                 Vector2 bulletDirection = mState.Position.ToVector2() - position; 
                 bulletDirection.Normalize(); 
                 BulletSystem.Instance.SummonBullet(position + new Vector2(50, 50), bulletDirection); 
+                shootTimer = shootCooldown;
             }
 
             oldState = mState;
@@ -63,10 +67,10 @@ namespace _vningsuppfsfkj
 
         private void HandleMovement(KeyboardState kState, ref Vector2 direction)
         {
-            currentSpeed = baseSpeed; // utgå från uppgraderad bas-speed
+            currentSpeed = baseSpeed; 
             if (Keyboard.GetState().IsKeyDown(Keys.LeftShift) && timeSinceLastClick >= clickCooldown)
             {
-                currentSpeed = baseSpeed * 10;
+                currentSpeed = baseSpeed * 20;
                 timeSinceLastClick = 0f;
             }
             if (kState.IsKeyDown(Keys.W)) direction.Y -= 1;
@@ -87,7 +91,13 @@ namespace _vningsuppfsfkj
                 if (entity is Enemy enemy && this.Rectangle.Intersects(enemy.Rectangle))
                 {
                     hp--; 
-                    TeleportEnemy(enemy);
+                    foreach(BaseClass bce in Game1.Game.entities)
+                    {
+                        if(bce is Enemy e)
+                        {
+                            TeleportEnemy(e);
+                        }
+                    }
                     dead = true; 
                     timeSinceLastDeath = 0f; 
                     position = new Vector2(350, 190); 
@@ -132,6 +142,18 @@ namespace _vningsuppfsfkj
         public void UpgradeSpeed(float amount)
         {
             baseSpeed += amount;
+        }
+        public void AddHP(int amount)
+        {
+            hp += amount;
+        }
+        public void UpgradeFireRate()
+        {
+            shootCooldown = Math.Max(0.05f, shootCooldown - 0.05f); // Stoppar vid 0.05s
+        }
+        public float GetShootCooldown()
+        {
+            return shootCooldown;
         }
         public Vector2 GetPosition() => position; 
         public float GetSpeed() => baseSpeed;

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <SourceFile>C:/Users/Kevin/OneDrive/Dokument/GitHub/-vningsuppfsfkj/Content/File.spritefont</SourceFile>
+  <SourceFile>c:/Users/Kevin/OneDrive/Dokument/GitHub/-vningsuppfsfkj/Content/File.spritefont</SourceFile>
   <SourceTime>2025-05-04T10:41:19.9268734+02:00</SourceTime>
-  <DestFile>C:/Users/Kevin/OneDrive/Dokument/GitHub/-vningsuppfsfkj/Content/bin/Windows/Content/File.xnb</DestFile>
-  <DestTime>2025-05-04T10:42:05.7479644+02:00</DestTime>
+  <DestFile>c:/Users/Kevin/OneDrive/Dokument/GitHub/-vningsuppfsfkj/Content/bin/Windows/File.xnb</DestFile>
+  <DestTime>2025-05-04T10:41:54.4751612+02:00</DestTime>
   <Importer>FontDescriptionImporter</Importer>
   <ImporterTime>2022-07-26T13:44:56+02:00</ImporterTime>
   <Processor>FontDescriptionProcessor</Processor>

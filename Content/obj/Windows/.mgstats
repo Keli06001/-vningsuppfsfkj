@@ -1,0 +1,5 @@
+Source File,Dest File,Processor Type,Content Type,Source File Size,Dest File Size,Build Seconds
+"c:/Users/Kevin/OneDrive/Dokument/GitHub/-vningsuppfsfkj/Content/bullet.png","c:/Users/Kevin/OneDrive/Dokument/GitHub/-vningsuppfsfkj/Content/bin/Windows/bullet.xnb","TextureProcessor","Texture2DContent",311039,1155397,0,1707366
+"c:/Users/Kevin/OneDrive/Dokument/GitHub/-vningsuppfsfkj/Content/enemy.png","c:/Users/Kevin/OneDrive/Dokument/GitHub/-vningsuppfsfkj/Content/bin/Windows/enemy.xnb","TextureProcessor","Texture2DContent",52413,3841685,0,1143605
+"c:/Users/Kevin/OneDrive/Dokument/GitHub/-vningsuppfsfkj/Content/File.spritefont","c:/Users/Kevin/OneDrive/Dokument/GitHub/-vningsuppfsfkj/Content/bin/Windows/File.xnb","FontDescriptionProcessor","SpriteFontContent",2665,38195,0,1012205
+"c:/Users/Kevin/OneDrive/Dokument/GitHub/-vningsuppfsfkj/Content/player.png","c:/Users/Kevin/OneDrive/Dokument/GitHub/-vningsuppfsfkj/Content/bin/Windows/player.xnb","TextureProcessor","Texture2DContent",104907,2725717,0,0765919
