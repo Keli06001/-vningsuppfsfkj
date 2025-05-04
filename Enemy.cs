@@ -20,6 +20,9 @@ namespace _vningsuppfsfkj
         }
         public override void Update(GameTime gameTime)
         {
+            if (Player.IsPlayerRespawning)
+                return;
+            
             Vector2 direction = p.GetPosition();
             direction = direction - position;
             if( direction != Vector2.Zero){
@@ -32,6 +35,9 @@ namespace _vningsuppfsfkj
         {
             position = newPosition; 
         }
-
+        public void Despawm(Vector2 newPosition)
+        {
+            position = newPosition; 
+        }
     }
 }

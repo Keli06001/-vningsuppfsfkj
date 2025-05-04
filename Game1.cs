@@ -116,7 +116,6 @@ namespace _vningsuppfsfkj
                     if (player.hp <= 0)
                     {
                         currentState = GameState.Menu;
-                        wave=1;
                         ResetGame();
                     }
 
@@ -130,8 +129,11 @@ namespace _vningsuppfsfkj
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.Aqua);
+            if(wave>=4)
+            {
+                GraphicsDevice.Clear(Color.Red);
+            }
             _spriteBatch.Begin();
-            _spriteBatch.DrawString(font, $"Wave: {wave}", new Vector2(5, 110), Color.Black);
 
             if (inBreak)
             {
@@ -155,6 +157,7 @@ namespace _vningsuppfsfkj
 
                 BulletSystem.Instance.Draw(_spriteBatch);
 
+                _spriteBatch.DrawString(font, "Wave: " + wave, new Vector2(5, 110), Color.Black);
                 _spriteBatch.DrawString(font, "Kills: " + BulletSystem.killCount.ToString(), new Vector2(5, 10), Color.Black);
                 _spriteBatch.DrawString(font, "XP: " + PointSystem.Instance.XP.ToString(), new Vector2(5, 30), Color.Black);
                 _spriteBatch.DrawString(font, "HP: " + player.hp.ToString(), new Vector2(5, 50), Color.Black);
@@ -200,6 +203,10 @@ namespace _vningsuppfsfkj
         private void ResetGame()
         {
             entities.Clear();
+            wave=1;
+            killsThisWave = 0;
+            killsPerWave = 30;
+            Player.IsPlayerRespawning = false;
 
             Texture2D playerTexture = Content.Load<Texture2D>("player");
             player = new Player(playerTexture);

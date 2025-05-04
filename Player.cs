@@ -10,15 +10,16 @@ namespace _vningsuppfsfkj
     {
         private MouseState oldState;
         private float timeSinceLastClick = 0f;
-        private float clickCooldown = 1.5f; 
+        private float clickCooldown = 1.2f; 
         private float timeSinceLastDeath = 0f; 
-        private float spawnCooldown = 1.5f; 
+        private float spawnCooldown = 1f; 
         private float shootCooldown = 0.5f; 
         private float shootTimer = 0f;
         private bool dead = false; 
         public int hp = 3; 
         private float baseSpeed = 5f;
         private float currentSpeed;  
+        public static bool IsPlayerRespawning = false;
 
         public Player(Texture2D texture)
             : base(texture, new Vector2(350, 190))
@@ -96,6 +97,7 @@ namespace _vningsuppfsfkj
                         if(bce is Enemy e)
                         {
                             TeleportEnemy(e);
+                            IsPlayerRespawning = true;
                         }
                     }
                     dead = true; 
@@ -114,6 +116,7 @@ namespace _vningsuppfsfkj
                 if (hp > 0) 
                 {
                     dead = false; 
+                    IsPlayerRespawning = false;
                     timeSinceLastDeath = 0f; 
                     Console.WriteLine("Player respawned!");
                     
